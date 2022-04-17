@@ -16,6 +16,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import {navLinks} from "../data/data";
+import {ThemeProvider, createTheme} from "@mui/material/styles";
+import {useDispatch, useSelector} from "react-redux";
+import {navtogActions} from "../store/navbar-togler";
+import TopBar from "./TopBar";
 
 const drawerWidth = 240;
 
@@ -49,23 +53,23 @@ const DrawerHeader = styled('div')(({theme}) => ({
     ...theme.mixins.toolbar,
 }));
 
-const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== 'open',
-})(({theme, open}) => ({
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-    }),
-    ...(open && {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    }),
-}));
+// const AppBar = styled(MuiAppBar, {
+//     shouldForwardProp: (prop) => prop !== 'open',
+// })(({theme, open}) => ({
+//     zIndex: theme.zIndex.drawer + 1,
+//     transition: theme.transitions.create(['width', 'margin'], {
+//         easing: theme.transitions.easing.sharp,
+//         duration: theme.transitions.duration.leavingScreen,
+//     }),
+//     ...(open && {
+//         marginLeft: drawerWidth,
+//         width: `calc(100% - ${drawerWidth}px)`,
+//         transition: theme.transitions.create(['width', 'margin'], {
+//             easing: theme.transitions.easing.sharp,
+//             duration: theme.transitions.duration.enteringScreen,
+//         }),
+//     }),
+// }));
 
 const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})(
     ({theme, open}) => ({
@@ -83,76 +87,64 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
         }),
     }),
 );
-
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark',
+        primary: {
+            main: '#1976d2',
+        },
+    },
+});
 const Header = () => {
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
 
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
+    const dispatch = useDispatch();
+    const open = useSelector(state => state.navtog.active);
 
     const handleDrawerClose = () => {
-        setOpen(false);
+        dispatch(navtogActions.toggleActive(false))
     };
-
     return (
         <Box sx={{display: 'flex'}}>
             <CssBaseline/>
-            <AppBar position="fixed" open={open}>
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        sx={{
-                            marginRight: 5,
-                            ...(open && {display: 'none'}),
-                        }}
-                    >
-                        <MenuIcon/>
-                    </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-            <Drawer variant="permanent" open={open}>
-                <DrawerHeader>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
-                    </IconButton>
-                </DrawerHeader>
-                <Divider/>
-                <List>
-                    {navLinks.map((link, index) => (
-                        <ListItemButton
-                            key={link}
-                            href={link.path}
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                        >
-                            <ListItemIcon
+            <ThemeProvider theme={darkTheme}>
+                <TopBar prop={drawerWidth}/>
+                <Drawer variant="permanent" open={open}>
+                    <DrawerHeader>
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
+                        </IconButton>
+                    </DrawerHeader>
+                    <Divider/>
+                    <List>
+                        {navLinks.map((link, index) => (
+                            <ListItemButton
+                                key={link}
+                                href={link.path}
                                 sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
+                                    minHeight: 48,
+                                    justifyContent: open ? 'initial' : 'center',
+                                    px: 2.5,
                                 }}
                             >
-                                {link.icon}
-                            </ListItemIcon>
-                            <ListItemText primary={link.name} sx={{opacity: open ? 1 : 0}}/>
-                        </ListItemButton>
-                    ))}
-                </List>
-            </Drawer>
-            <Box component="main" sx={{flexGrow: 1, p: 3}}>
-                <DrawerHeader/>
-            </Box>
+                                <ListItemIcon
+                                    sx={{
+                                        minWidth: 0,
+                                        mr: open ? 3 : 'auto',
+                                        justifyContent: 'center',
+                                    }}
+                                >
+                                    {link.icon}
+                                </ListItemIcon>
+                                <ListItemText primary={link.name} sx={{opacity: open ? 1 : 0}}/>
+                            </ListItemButton>
+                        ))}
+                    </List>
+                </Drawer>
+                <Box component="main" sx={{flexGrow: 1, p: 3}}>
+                    <DrawerHeader/>
+                </Box>
+            </ThemeProvider>
         </Box>
     );
 }
