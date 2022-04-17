@@ -12,27 +12,27 @@ export const navLinks = [
     },
     {
         name: "О себе",
-        path: "/",
+        path: "/about",
         icon: <PersonOutlineOutlinedIcon/>
     },
     {
         name: "Портфолио",
-        path: "/",
+        path: "/portfolio",
         icon: <WorkOutlineOutlinedIcon/> ,
     },
     {
         name: "Контакты",
-        path: "/",
+        path: "/contact",
         icon: <CallOutlinedIcon/>,
     },
     {
         name: "Сервисы",
-        path: "/",
+        path: "/service",
         icon: <MiscellaneousServicesOutlinedIcon/>,
     },
     {
         name: "Блог",
-        path: "/",
+        path: "/blog",
         icon: <ArticleOutlinedIcon/>,
     },
 ];
