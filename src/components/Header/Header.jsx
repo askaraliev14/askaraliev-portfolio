@@ -1,9 +1,7 @@
 import * as React from 'react';
 import {styled, useTheme} from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -12,11 +10,11 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import {navLinks} from "../../data/data";
-import {ThemeProvider, createTheme} from "@mui/material/styles";
 import {useDispatch, useSelector} from "react-redux";
 import {navtogActions} from "../../store/navbar-togler";
 import TopBar from "./TopBar";
 import {drawerWidth} from "../../data/data";
+import {Fragment} from "react";
 
 const openedMixin = (theme) => ({
     width: drawerWidth,
@@ -44,7 +42,6 @@ const DrawerHeader = styled('div')(({theme}) => ({
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
 }));
 const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})(
@@ -63,14 +60,7 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
         }),
     }),
 );
-const darkTheme = createTheme({
-    palette: {
-        mode: 'dark',
-        primary: {
-            main: '#1976d2',
-        },
-    },
-});
+
 const Header = () => {
     const theme = useTheme();
 
@@ -81,9 +71,7 @@ const Header = () => {
         dispatch(navtogActions.toggleActive(false))
     };
     return (
-        <Box sx={{display: 'flex'}}>
-            <CssBaseline/>
-            <ThemeProvider theme={darkTheme}>
+        <Fragment>
                 <TopBar prop={drawerWidth}/>
                 <Drawer variant="permanent" open={open}>
                     <DrawerHeader>
@@ -117,11 +105,7 @@ const Header = () => {
                         ))}
                     </List>
                 </Drawer>
-                <Box component="main" sx={{flexGrow: 1, p: 3}}>
-                    <DrawerHeader/>
-                </Box>
-            </ThemeProvider>
-        </Box>
+        </Fragment>
     );
 }
 
