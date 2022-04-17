@@ -36,3 +36,6 @@ export const navLinks = [
         icon: <ArticleOutlinedIcon/>,
     },
 ];
+
+// Ширина бокового навбара
+export const drawerWidth = 240;

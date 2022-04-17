@@ -4,11 +4,10 @@ import Typography from "@mui/material/Typography";
 import Toolbar from "@mui/material/Toolbar";
 import * as React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {navtogActions} from "../store/navbar-togler";
+import {navtogActions} from "../../store/navbar-togler";
 import {styled} from "@mui/material/styles";
 import MuiAppBar from "@mui/material/AppBar";
-
-const drawerWidth = 240;
+import {drawerWidth} from "../../data/data";
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -27,8 +26,6 @@ const AppBar = styled(MuiAppBar, {
         }),
     }),
 }));
-
-
 
 const TopBar = () => {
     const dispatch = useDispatch();
