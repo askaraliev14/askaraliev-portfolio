@@ -8,6 +8,7 @@ import {navtogActions} from "../../store/navbar-togler";
 import {styled} from "@mui/material/styles";
 import MuiAppBar from "@mui/material/AppBar";
 import {drawerWidth} from "../../data/data";
+import {Container} from "@mui/material";
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -36,25 +37,25 @@ const TopBar = () => {
     };
 
     return (
-        <AppBar position="fixed" open={open} enableColorOnDark>
-            <Toolbar sx={{background: "#ffb74d"}}>
-                <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    onClick={handleDrawerOpen}
-                    edge="start"
-                    sx={{
-                        marginRight: 5,
-                        ...(open && {display: 'none'}),
-                    }}
-                >
-                    <MenuIcon/>
-                </IconButton>
-                <Typography variant="h6" noWrap component="div">
+            <AppBar open={open} enableColorOnDark>
+                <Toolbar sx={{background: "#ffb74d"}}>
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={handleDrawerOpen}
+                        edge="start"
+                        sx={{
+                            marginRight: 5,
+                            ...(open && {display: 'none'}),
+                        }}
+                    >
+                        <MenuIcon/>
+                    </IconButton>
+                    <Typography variant="h6" noWrap component="div">
 
-                </Typography>
-            </Toolbar>
-        </AppBar>
+                    </Typography>
+                </Toolbar>
+            </AppBar>
     )
 };
 
