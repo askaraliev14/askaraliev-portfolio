@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Content from "../src/components/Main/Content";
+import Content from "../src/components/MainPage/Content";
 import AppLayout from "../src/components/AppLayout/AppLayout";
 
 
