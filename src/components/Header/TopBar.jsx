@@ -9,6 +9,7 @@ import {styled} from "@mui/material/styles";
 import MuiAppBar from "@mui/material/AppBar";
 import {drawerWidth} from "../../data/data";
 import {Container} from "@mui/material";
+import DrawerBar from "./DrawerBar";
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -37,7 +38,7 @@ const TopBar = () => {
     };
 
     return (
-            <AppBar open={open} enableColorOnDark>
+            <AppBar open={open} position="relative">
                 <Toolbar sx={{background: "#ffb74d"}}>
                     <IconButton
                         color="inherit"
@@ -51,11 +52,10 @@ const TopBar = () => {
                     >
                         <MenuIcon/>
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-
-                    </Typography>
                 </Toolbar>
+
             </AppBar>
+
     )
 };
 
