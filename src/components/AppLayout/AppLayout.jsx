@@ -18,6 +18,11 @@ const darkTheme = createTheme({
 const AppLayout = ({children, title = "Askaraliev"}) => {
     return <Fragment>
         <ThemeProvider theme={darkTheme}>
+            <Head>
+                <title>{title}</title>
+                <meta charSet="utf-8"/>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+            </Head>
             <Box
                 sx={{
                     display: 'grid',
@@ -33,16 +38,6 @@ const AppLayout = ({children, title = "Askaraliev"}) => {
                 <Box sx={{gridArea: 'main', background: "black", height: "90vh"}}>{children}</Box>
                 <Box sx={{gridArea: 'footer'}}><Footer/></Box>
             </Box>
-        {/*<Head>*/}
-        {/*    <title>{title}</title>*/}
-        {/*    <meta charSet="utf-8"/>*/}
-        {/*    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>*/}
-        {/*</Head>*/}
-        {/*        <Header/>*/}
-
-        {/*        {children}*/}
-
-        {/*        <Footer/>*/}
         </ThemeProvider>
     </Fragment>;
 };

@@ -10,7 +10,7 @@ import { TextLoop } from "react-text-loop-next";
 
 const Item = styled(Paper)(({theme}) => ({
     position: "fixed",
-    top: "300px",
+    top: "250px",
     background: "transparent",
     // backgroundColor: "transparent",
     padding: theme.spacing(1),
@@ -19,20 +19,20 @@ const Item = styled(Paper)(({theme}) => ({
     fontSize: "30px"
 }));
 
-const ContentContainer = styled(Container)(({theme}) => ({
-    // maxWidth: "100%!important",
-    // height: "100vh",
-    background: "black",
-    boxSizing: "border-box"
-}));
+// const ContentContainer = styled(Container)(({theme}) => ({
+//     // maxWidth: "100%!important",
+//     // height: "100vh",
+//     background: "black",
+//     boxSizing: "border-box"
+// }));
 
 
 
-const Content = () => {
+const MainPage = () => {
     return (
         <Fragment>
-            <ContentContainer>
-                {/*<ContentCanvas/>*/}
+            {/*<ContentContainer>*/}
+                <ContentCanvas/>
                 <Box sx={{
                     marginLeft: "240px",
                     height: "100%",
@@ -48,10 +48,10 @@ const Content = () => {
                     </Item>
                 </Box>
 
-            </ContentContainer>
+            {/*</ContentContainer>*/}
         </Fragment>
 
     )
 };
 
-export default Content;
+export default MainPage;

@@ -1,12 +1,13 @@
 import * as React from 'react';
-import Content from "../src/components/MainPage/Content";
+import MainPage from "../src/components/MainPage/MainPage";
 import AppLayout from "../src/components/AppLayout/AppLayout";
+import {TextLoop} from "react-text-loop-next";
 
 
 const Home = () => {
     return (
         <AppLayout>
-            <Content/>
+            <MainPage/>
         </AppLayout>
     )
 };
