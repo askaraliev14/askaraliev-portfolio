@@ -7,32 +7,32 @@ import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 
 export const navLinks = [
     { name: "Главная",
-        path: "/",
+        url: "/",
         icon: <HomeOutlinedIcon/>
     },
     {
         name: "О себе",
-        path: "/about",
+        url: "/about",
         icon: <PersonOutlineOutlinedIcon/>
     },
     {
         name: "Портфолио",
-        path: "/portfolio",
+        url: "/portfolio",
         icon: <WorkOutlineOutlinedIcon/> ,
     },
     {
         name: "Контакты",
-        path: "/contact",
+        url: "/contact",
         icon: <CallOutlinedIcon/>,
     },
     {
         name: "Сервисы",
-        path: "/service",
+        url: "/service",
         icon: <MiscellaneousServicesOutlinedIcon/>,
     },
     {
         name: "Блог",
-        path: "/blog",
+        url: "/blog",
         icon: <ArticleOutlinedIcon/>,
     },
 ];

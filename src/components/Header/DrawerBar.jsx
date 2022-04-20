@@ -12,6 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {navtogActions} from "../../store/navbar-togler";
 import {styled, useTheme} from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
+import Link from "next/link";
 
 const openedMixin = (theme) => ({
     width: drawerWidth,
@@ -57,6 +58,8 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
         }),
     }),
 );
+
+
 const DrawerBar = () => {
     const theme = useTheme();
 
@@ -75,27 +78,30 @@ const DrawerBar = () => {
             </DrawerHeader>
             <Divider/>
             <List>
-                {navLinks.map((link, index) => (
-                    <ListItemButton
-                        key={link}
-                        href={link.path}
-                        sx={{
-                            minHeight: 48,
-                            justifyContent: open ? 'initial' : 'center',
-                            px: 2.5,
-                        }}
-                    >
-                        <ListItemIcon
+                {navLinks.map((link) => (
+                    <Link key={link.name} href={link.url}>
+                        <ListItemButton
+                            component="div"
                             sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                justifyContent: 'center',
+                                minHeight: 48,
+                                justifyContent: open ? 'initial' : 'center',
+                                px: 2.5,
+                                py: "20px"
                             }}
                         >
-                            {link.icon}
-                        </ListItemIcon>
-                        <ListItemText primary={link.name} sx={{opacity: open ? 1 : 0}}/>
-                    </ListItemButton>
+                            <ListItemIcon
+                                sx={{
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                {link.icon}
+                            </ListItemIcon>
+                            <ListItemText primary={link.name} sx={{opacity: open ? 1 : 0}}/>
+                            <Divider/>
+                        </ListItemButton>
+                    </Link>
                 ))}
             </List>
         </Drawer>
