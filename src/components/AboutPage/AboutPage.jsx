@@ -7,18 +7,56 @@ import {FiMail} from "react-icons/fi";
 import {GoCalendar, GoLocation} from "react-icons/go";
 import {styled} from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
+import Accordion from "./Accordion";
 
 const ContactInfo = styled("div")(({theme}) => ({
     marginTop: 10,
     marginBottom: 10,
+    color: "#ffb74d",
+    display: "flex",
+    "span": {
+        display: "flex",
+        alignItems: "center",
+        textAlign: "center",
+        fontSize: 15,
+        marginRight: "15px"
+    }
 }));
+
+const contactList = [
+    {
+        name: "",
+        icon: <FaPhoneSquareAlt/>,
+        info: "+9989234567"
+    },
+    {
+        name: "",
+        icon: <FiMail/>,
+        info: "askaraliev1499@gmail.com"
+    },
+    {
+        name: "",
+        icon: <GoLocation/>,
+        info: "Tashkent, Uzbekistan"
+    },
+    {
+        name: "",
+        icon: <GoCalendar/>,
+        info: "14-12-1999"
+    },
+    {
+        name: "",
+        icon: <FaGithub/>,
+        info: "https://github.com/askaraliev14"
+    },
+];
 
 const AboutPage = () => {
     return (
         <Box sx={{
             marginLeft: "240px",
             height: "100%",
-            background: "white",
+            // background: "white",
             display: "flex",
             justifyContent: "space-between"
         }}>
@@ -29,29 +67,26 @@ const AboutPage = () => {
                 borderColor: "red"
             }}>
                 <Card sx={{height: "100%",}}>
-                    <Avatar alt="Remy Sharp" src="/assets/images/about/about.jpg"
+                    <Avatar alt="About" src="/assets/images/about/about2.jpg"
                             sx={{margin: "auto", height: '200px', width: '200px', marginTop: 2}}/>
-                    {/*<CardMedia*/}
-                    {/*    component="img"*/}
-                    {/*    alt="green iguana"*/}
-                    {/*    height="140"*/}
-                    {/*    image="/assets/images/about/about.jpg"*/}
-                    {/*    // background: "fit"*/}
-                    {/*    sx={{*/}
-                    {/*        borderRadius: "100%",*/}
-                    {/*        height: "33%",*/}
-                    {/*    }}*/}
-                    {/*/>*/}
-
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div" textAlign="center">
                             Askaraliev Fazliddin
                         </Typography>
                         <Divider/>
-                        <ContactInfo><FaPhoneSquareAlt/><span>+9989234567</span></ContactInfo>
+                        {contactList.map((contact) => (
+                            <ContactInfo>
+                                <span key={contact.name}>
+                                    {contact.icon}
+                                </span>
+                                <span key={contact.name}>
+                                   {contact.info}
+                                </span>
+                            </ContactInfo>
+                        ))}
                         <Divider/>
                         <Typography variant="body2" color="text.secondary">
-                            text text text
+
                         </Typography>
                     </CardContent>
                 </Card>
@@ -62,7 +97,7 @@ const AboutPage = () => {
                 border: 2,
                 borderColor: "red"
             }}>
-                Content
+                <Accordion/>
             </Box>
         </Box>
     )
