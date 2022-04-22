@@ -26,27 +26,27 @@ const ContactInfo = styled("div")(({theme}) => ({
 
 const contactList = [
     {
-        name: "",
+        name: "phone",
         icon: <FaPhoneSquareAlt/>,
         info: "+998(99)798-66-92"
     },
     {
-        name: "",
+        name: "mail",
         icon: <FiMail/>,
         info: "askaraliev1499@gmail.com"
     },
     {
-        name: "",
+        name: "location",
         icon: <GoLocation/>,
         info: "Tashkent, Uzbekistan"
     },
     {
-        name: "",
+        name: "birth",
         icon: <GoCalendar/>,
         info: "14-12-1999"
     },
     {
-        name: "",
+        name: "github",
         icon: <FaGithub/>,
         info: "https://github.com/askaraliev14"
     },
@@ -74,7 +74,7 @@ const AboutPage = () => {
                         </Typography>
                         <Divider/>
                         {contactList.map((contact) => (
-                            <ContactInfo>
+                            <ContactInfo key={contact.name}>
                                 <span>
                                     {contact.icon}
                                 </span>

@@ -79,7 +79,7 @@ const DrawerBar = () => {
             <Divider/>
             <List>
                 {navLinks.map((link) => (
-                    <Link key={link.name} href={link.url}>
+                    <Link key={link.name} href={link.url} passHref>
                         <ListItemButton
                             component="div"
                             sx={{
