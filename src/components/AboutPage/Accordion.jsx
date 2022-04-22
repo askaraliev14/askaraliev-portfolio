@@ -7,12 +7,15 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import AccordionSkills from "./AccordionSkills";
+import AccordionSkills from "./AccordionComponents/AccordionSkills";
 import {FaLanguage, FaUniversity} from "react-icons/fa";
 import {GrCertificate} from "react-icons/gr";
 import {GiBlackBook, GiSkills} from "react-icons/gi";
-import AccordionEducation from "./AccordionEducation";
-import AccordionLanguage from "./AccordionLanguage";
+import AccordionEducation from "./AccordionComponents/AccordionEducation";
+import AccordionLanguage from "./AccordionComponents/AccordionLanguage";
+import AccordionCertificates from "./AccordionComponents/AccordionCertificates";
+import AccordionInterest from "./AccordionComponents/AccordionInterest";
+import {BsPersonFill} from "react-icons/bs";
 
 function TabPanel(props) {
     const {children, value, index, ...other} = props;
@@ -71,16 +74,16 @@ export default function Accordion() {
                     variant="fullWidth"
                     aria-label="full width tabs example"
                 >
-                    <Tab icon={<GiSkills/>} label="Skills" {...a11yProps(0)} />
-                    <Tab icon={<FaUniversity/>} label="Education"  {...a11yProps(1)} />
-                    <Tab icon={<FaLanguage/>} label="Languages" {...a11yProps(2)} />
-                    <Tab icon={<GiBlackBook/>} label="Interests" {...a11yProps(3)} />
+                    <Tab icon={<GiSkills/>} label="Навыки" {...a11yProps(0)} />
+                    <Tab icon={<FaUniversity/>} label="Образование"  {...a11yProps(1)} />
+                    <Tab icon={<FaLanguage/>} label="Языки" {...a11yProps(2)} />
+                    <Tab icon={<BsPersonFill/>} label="О себе" {...a11yProps(3)} />
                     <Tab icon={<GrCertificate/>} sx={{
                         "svg": {
                             fill: "currentColor"
                             // color: "white"
                         }
-                    }} label="Certificates" {...a11yProps(4)} />
+                    }} label="Сертификаты" {...a11yProps(4)} />
                 </Tabs>
             </AppBar>
             <SwipeableViews
@@ -97,11 +100,11 @@ export default function Accordion() {
                 <TabPanel value={value} index={2} dir={theme.direction}>
                     <AccordionLanguage/>
                 </TabPanel>
-                <TabPanel value={value} index={2} dir={theme.direction}>
-                    Item Three
+                <TabPanel value={value} index={3} dir={theme.direction}>
+                    <AccordionInterest/>
                 </TabPanel>
-                <TabPanel value={value} index={2} dir={theme.direction}>
-                    Item Three
+                <TabPanel value={value} index={4} dir={theme.direction}>
+                    <AccordionCertificates/>
                 </TabPanel>
             </SwipeableViews>
         </Box>
