@@ -7,6 +7,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import AccordionSkills from "./AccordionSkills";
+import {FaLanguage, FaUniversity} from "react-icons/fa";
+import {GrCertificate} from "react-icons/gr";
+import {GiBlackBook, GiSkills} from "react-icons/gi";
+import AccordionEducation from "./AccordionEducation";
+import AccordionLanguage from "./AccordionLanguage";
 
 function TabPanel(props) {
     const {children, value, index, ...other} = props;
@@ -21,7 +27,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box sx={{height: "100%", background: "black"}}>
-                    <Typography>{children}</Typography>
+                    {children}
                 </Box>
             )}
         </div>
@@ -55,7 +61,7 @@ export default function Accordion() {
     };
 
     return (
-        <Box sx={{width: "100%"}}>
+        <Box sx={{width: "100%", background: "transparent"}}>
             <AppBar position="static">
                 <Tabs
                     value={value}
@@ -64,13 +70,17 @@ export default function Accordion() {
                     textColor="inherit"
                     variant="fullWidth"
                     aria-label="full width tabs example"
-
                 >
-                    <Tab label="Skills" {...a11yProps(0)} />
-                    <Tab label="Item Two" {...a11yProps(1)} />
-                    <Tab label="Item Three" {...a11yProps(2)} />
-                    <Tab label="Item Four" {...a11yProps(3)} />
-                    <Tab label="Item Five" {...a11yProps(4)} />
+                    <Tab icon={<GiSkills/>} label="Skills" {...a11yProps(0)} />
+                    <Tab icon={<FaUniversity/>} label="Education"  {...a11yProps(1)} />
+                    <Tab icon={<FaLanguage/>} label="Languages" {...a11yProps(2)} />
+                    <Tab icon={<GiBlackBook/>} label="Interests" {...a11yProps(3)} />
+                    <Tab icon={<GrCertificate/>} sx={{
+                        "svg": {
+                            fill: "currentColor"
+                            // color: "white"
+                        }
+                    }} label="Certificates" {...a11yProps(4)} />
                 </Tabs>
             </AppBar>
             <SwipeableViews
@@ -79,13 +89,13 @@ export default function Accordion() {
                 onChangeIndex={handleChangeIndex}
             >
                 <TabPanel value={value} index={0} dir={theme.direction}>
-                    Skills
+                    <AccordionSkills/>
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction}>
-                    Item Two
+                    <AccordionEducation/>
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction}>
-                    Item Three
+                    <AccordionLanguage/>
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction}>
                     Item Three
