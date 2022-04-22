@@ -27,7 +27,7 @@ const contactList = [
     {
         name: "",
         icon: <FaPhoneSquareAlt/>,
-        info: "+9989234567"
+        info: "+998(99)798-66-92"
     },
     {
         name: "",
@@ -56,18 +56,16 @@ const AboutPage = () => {
         <Box sx={{
             marginLeft: "240px",
             height: "100%",
-            // background: "white",
+            background: "transparent",
             display: "flex",
             justifyContent: "space-between"
         }}>
             <Box sx={{
                 height: "100%",
                 width: "30%",
-                border: 2,
-                borderColor: "red"
             }}>
-                <Card sx={{height: "100%",}}>
-                    <Avatar alt="About" src="/assets/images/about/about2.jpg"
+                <Card sx={{height: "100%", }}>
+                    <Avatar alt="About" src="/assets/images/about/about.jpg"
                             sx={{margin: "auto", height: '200px', width: '200px', marginTop: 2}}/>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div" textAlign="center">
@@ -76,10 +74,10 @@ const AboutPage = () => {
                         <Divider/>
                         {contactList.map((contact) => (
                             <ContactInfo>
-                                <span key={contact.name}>
+                                <span>
                                     {contact.icon}
                                 </span>
-                                <span key={contact.name}>
+                                <span>
                                    {contact.info}
                                 </span>
                             </ContactInfo>
@@ -94,8 +92,6 @@ const AboutPage = () => {
             <Box sx={{
                 height: "100%",
                 width: "70%",
-                border: 2,
-                borderColor: "red"
             }}>
                 <Accordion/>
             </Box>
