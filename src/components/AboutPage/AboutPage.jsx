@@ -8,6 +8,7 @@ import {GoCalendar, GoLocation} from "react-icons/go";
 import {styled} from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Accordion from "./Accordion";
+import ContentCanvas from "../MainPage/ContentCanvas";
 
 const ContactInfo = styled("div")(({theme}) => ({
     marginTop: 10,
